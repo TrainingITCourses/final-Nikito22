@@ -123,5 +123,8 @@
       }
     }
   },
-  "defaultProject": "Isa"
+  "defaultProject": "Isa",
+  "cli": {
+    "defaultCollection": "@ngrx/schematics"
+  }
 }
