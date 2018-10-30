@@ -1,5 +1,4 @@
-import { Action } from '@ngrx/store';
-import { IsaActions } from './isa.actions';
+import {  IsaActions, LoadIsa, IsaActionTypes } from './isa.actions';
 
 export interface State {
   totLanzamientos: number;
@@ -13,9 +12,9 @@ export const initialState: State = {
   lanzamientoActual: {}
 };
 
-export function reducer(state = initialState, action: IsaAction): State {
+export function reducer(state = initialState, action: IsaActions): State {
   switch (action.type) {
-
+    case IsaActionTypes.LoadIsa:
     default:
       return state;
   }
