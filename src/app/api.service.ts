@@ -10,5 +10,5 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
-  getLanzamientos$ = () => this.http.get(this.url);
+  public getLanzamientos$ = () => this.http.get(this.url);
 }
