@@ -1,22 +1,22 @@
-import { Action } from '@ngrx/store';
+import { Action, State } from '@ngrx/store';
 import { EstadoActions, EstadoActionTypes } from './estado.actions';
 
-export interface State {
-  id: Number;
+
+export interface EstadoState {
+  cargado: boolean;
+  err: string;
 }
 
-export const initialState: State = {
-  id: 0,
+export const initialState: EstadoState = {
+  cargado: false,
+  err: ''
 };
 
-export function reducer(state = initialState, action: EstadoActions): State {
+export function reducer(state = initialState, action: EstadoActions): EstadoState {
   switch (action.type) {
-
-    case EstadoActionTypes.LoadEstados:
-      return state;
-
 
     default:
       return state;
+
   }
 }

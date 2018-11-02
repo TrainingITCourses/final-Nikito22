@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
+
+import { IsaState } from '../store';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-barra',
@@ -7,9 +12,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BarraComponent implements OnInit {
 
-  constructor() { }
+  public isa$: Observable<any>;
+
+  constructor(private store: Store<IsaState>,
+    public router: Router) { }
 
   ngOnInit() {
+    this.isa$ = this.store.select('isa');
   }
-
 }

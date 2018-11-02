@@ -1,2 +1,7 @@
-<app-barra></app-barra>
-<router-outlet></router-outlet>
+<div *ngIf="(isa$ | async)?.cargado; else noCargado">
+  <app-barra></app-barra>
+  <router-outlet></router-outlet>
+</div>
+<ng-template #noCargado>
+  Cargando ...
+</ng-template>

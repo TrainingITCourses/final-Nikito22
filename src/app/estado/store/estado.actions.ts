@@ -1,11 +1,13 @@
 import { Action } from '@ngrx/store';
 
+
 export enum EstadoActionTypes {
-  LoadEstados = '[Estado] Load Estados'
+  CargarEstado = '[Estado] Cargar Estado',
+
 }
 
-export class LoadEstados implements Action {
-  readonly type = EstadoActionTypes.LoadEstados;
+export class CargarEstado implements Action {
+  readonly type = EstadoActionTypes.CargarEstado;
 }
 
-export type EstadoActions = LoadEstados;
+export type EstadoActions = CargarEstado;

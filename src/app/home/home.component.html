@@ -1,5 +1,5 @@
-<div> Home
-  <div *ngFor="let e of estados">
-    <a [routerLink]="['/estado/' + e]">Estado {{e}}</a>
+<div>
+  <div *ngFor="let e of (isa$ | async).estados">
+    <a [routerLink]="['/estado/' + e]">Estado {{e.id}}</a>
   </div>
 </div>
