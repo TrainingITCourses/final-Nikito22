@@ -14,13 +14,12 @@ import { Observable } from 'rxjs';
 export class AppComponent implements OnInit {
   title = 'app';
 
-  public isa$: Observable<any>;
+  public isa$ = this.store.select('isa');
 
   constructor(private store: Store<IsaState>) { }
 
   ngOnInit() {
-    this.store.dispatch(new CargarEstados);
     this.store.dispatch(new CargarLanzamientos);
-    this.isa$ = this.store.select('isa');
+    this.store.dispatch(new CargarEstados);
   }
 }

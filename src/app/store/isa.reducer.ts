@@ -22,7 +22,10 @@ export const initialState: State = {
 export function reducer(state = initialState, action: IsaActions): State {
   switch (action.type) {
     case IsaActionTypes.CambioOpcion:
-      return { ...state, opcion: action.payload.opcion, info: action.payload.info };
+      state.opcion = action.payload.opcion;
+      state.info = action.payload.info;
+      return state;
+    // return { ...state, opcion: action.payload.opcion, info: action.payload.info };
 
     case IsaActionTypes.CargarEstados:
       return state;

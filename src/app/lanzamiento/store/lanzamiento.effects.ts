@@ -1,23 +1,32 @@
+import { CargarLanzamiento, LanzamientoCargado, LanzamientoNoCargado, LanzamientoActionTypes } from './lanzamiento.actions';
+import { IsaState } from './../../store/index';
 import { Injectable } from '@angular/core';
-import { Actions, Effect, ofType } from '@ngrx/effects';
-import { LanzamientoActionTypes, CargarLanzamientos, LanzamientosCargados, LanzamientosNoCargados } from './lanzamiento.actions';
-import { ApiService } from 'src/app/api.service';
-import { mergeMap, catchError, map } from 'rxjs/operators';
+import { Actions, Effect } from '@ngrx/effects';
+import { map, catchError, mergeMap } from 'rxjs/operators';
 import { of } from 'rxjs';
+
+import { Store } from '@ngrx/store';
 
 @Injectable()
 export class LanzamientoEffects {
 
-  @Effect()
-  cargarLanzamientos$ = this.actions$.pipe(
-    ofType(LanzamientoActionTypes.CargarLanzamientos),
-    mergeMap((action: CargarLanzamientos) =>
-      this.api.getLanzamientos$().pipe(
-        map(l => new LanzamientosCargados(l)),
-        catchError(err => of(new LanzamientosNoCargados(err.message)))
-      )
-    )
-  );
+  public isa$ = this.store.select('isa');
 
-  constructor(private actions$: Actions, private api: ApiService) { }
+  @Effect()
+  public cargaLanzamiento$ = this.actions$.ofType(LanzamientoActionTypes.CargarLanzamiento)
+    .pipe(
+      mergeMap((action: CargarLanzamiento) => this.isa$
+        .pipe(
+          map(i => new LanzamientoCargado(i.lanzamientos.find(l => l.id = action.payload))),
+          catchError(err => of(new LanzamientoNoCargado(err.message)))
+        )
+      )
+    );
+
+
+  constructor(
+    private actions$: Actions,
+    private store: Store<IsaState>) {
+  }
+
 }

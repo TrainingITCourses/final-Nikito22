@@ -12,12 +12,10 @@ import { Router } from '@angular/router';
 })
 export class BarraComponent implements OnInit {
 
-  public isa$: Observable<any>;
+  public isa$ = this.store.select('isa');
 
   constructor(private store: Store<IsaState>,
     public router: Router) { }
 
-  ngOnInit() {
-    this.isa$ = this.store.select('isa');
-  }
+  ngOnInit() { }
 }

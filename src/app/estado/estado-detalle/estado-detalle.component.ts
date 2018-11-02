@@ -7,7 +7,8 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class EstadoDetalleComponent implements OnInit {
 
-  @Input() id = 0;
+
+  @Input() estado: any;
 
   constructor() { }
 

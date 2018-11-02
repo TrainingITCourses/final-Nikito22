@@ -17,7 +17,8 @@ const lanzamientos: Routes = [
 @NgModule({
   imports: [
     CommonModule, RouterModule.forChild(lanzamientos),
-    StoreModule.forFeature('lanzamiento', fromLanzamiento.reducer), EffectsModule.forFeature([LanzamientoEffects])
+    StoreModule.forFeature('lanzamiento', fromLanzamiento.reducer),
+    EffectsModule.forFeature([LanzamientoEffects])
   ],
   declarations: [LanzamientoComponent, LanzamientoDetalleComponent]
 })

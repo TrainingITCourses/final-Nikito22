@@ -1,3 +1,7 @@
 <p>
-  lanzamiento-detalle {{id}} works!
+  <span>Nombre: {{lanzamiento?.name }}</span>
+  <span>Fecha: {{lanzamiento?.windowstart }}</span>
+  <span>Cohete: {{lanzamiento?.rocket?.name }}</span>
+  <img src="{{lanzamiento?.rocket?.imageURL }}" />
 </p>
+<div>{{lanzamiento?.rocket?.imageURL }}</div>

@@ -7,8 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class LanzamientoDetalleComponent implements OnInit {
 
-  @Input() id = 0;
-
+  @Input() lanzamiento: any;
 
   constructor() { }
 

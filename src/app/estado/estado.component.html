@@ -1,6 +1,6 @@
 <div>
-  <app-estado-detalle [id]="id"></app-estado-detalle>
-  <div *ngFor="let l of lanzamientos">
-    <a [routerLink]="['/lanzamiento/' + l]">lanzamiento {{l}}</a>
+  <app-estado-detalle [estado]="(estado$ | async).estado"></app-estado-detalle>
+  <div *ngFor="let l of (estado$ | async).lanzamientos">
+    <a [routerLink]="['/lanzamiento/' + l.id]">{{l.name}}</a>
   </div>
 </div>

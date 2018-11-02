@@ -1,5 +1,7 @@
 <div>
   <div *ngFor="let e of (isa$ | async).estados">
-    <a [routerLink]="['/estado/' + e]">Estado {{e.id}}</a>
+    <a [routerLink]="['/estado/' + e.id]" [ngStyle]="{'color': e.color == 'warn'? 'red' : 'black'}">
+      {{e.name}}
+    </a>
   </div>
 </div>

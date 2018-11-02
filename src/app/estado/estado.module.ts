@@ -17,7 +17,8 @@ const estados: Routes = [
 @NgModule({
   imports: [
     CommonModule, RouterModule.forChild(estados),
-    StoreModule.forFeature('estado', fromEstado.reducer), EffectsModule.forFeature([EstadoEffects])
+    StoreModule.forFeature('estado', fromEstado.reducer),
+    EffectsModule.forFeature([EstadoEffects])
   ],
   declarations: [EstadoComponent, EstadoDetalleComponent]
 })

@@ -1,3 +1,5 @@
-<p>
-  estado-detalle {{id}} works!
+<p [ngStyle]="{'color': estado.color == 'warn'? 'red' : 'black'}">
+  <span>{{estado.name }}</span>
+  <span>{{estado.description }}</span>
+  <span>{{estado.changed }}</span>
 </p>

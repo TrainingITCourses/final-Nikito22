@@ -1,8 +1,11 @@
 import { CambioOpcion } from './../store/isa.actions';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLinkActive, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { IsaState } from '../store';
+import { EstadoState } from './store/estado.reducer';
+import { CargarEstado } from './store/estado.actions';
+import { State } from '../store/isa.reducer';
 
 @Component({
   selector: 'app-estado',
@@ -11,18 +14,23 @@ import { IsaState } from '../store';
 })
 export class EstadoComponent implements OnInit {
 
-  public id = '';
-  public isa$ = this.store.select('isa');
-
-  public lanzamientos = [100, 101, 102];
+  public estado$ = this.estadoStore.select('estado');
 
   constructor(
     private store: Store<IsaState>,
+    private estadoStore: Store<EstadoState>,
     private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
-    this.route.params.subscribe(params => this.id = params['id']);
-    this.store.dispatch(new CambioOpcion({ opcion: 'Estado', info: 'Nombre Estado' }));
+    this.route.params.subscribe(params => {
+      this.estadoStore.dispatch(new CargarEstado(params['id']));
+    });
+    this.estado$.subscribe(e => {
+      this.store.dispatch(new CambioOpcion({
+        opcion: 'Estado',
+        info: e.estado.name + ' (' + e.lanzamientos.length + ' lanzamientos)'
+      }));
+    });
   }
 }

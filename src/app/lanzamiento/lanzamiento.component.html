@@ -1,4 +1,5 @@
-<app-lanzamiento-detalle [id]="id"></app-lanzamiento-detalle>
-<p>
-  lanzamiento {{id}}
-</p>
+<div>
+  <app-lanzamiento-detalle [lanzamiento]="(lanzamiento$ | async).lanzamiento">
+
+  </app-lanzamiento-detalle>
+</div>
